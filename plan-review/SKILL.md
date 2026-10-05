@@ -12,9 +12,9 @@ Check that:
 - the goal and scope are clear, and no simpler version would solve the same problem
 - the implementer has the necessary context and all references are present and valid
 - the approach is concrete enough to guide work without becoming a code dump, with assumptions named
-- acceptance criteria describe specific, testable outcomes rather than implementation tasks
+- acceptance criteria describe specific, testable outcomes rather than implementation tasks or routine post-push CI success; CI is a PR merge gate, and ticking it afterward would require another commit and CI run
 - relevant edge cases and failure modes are covered
-- validation expectations match what the repository actually uses
+- any validation guidance is useful and matches what the repository actually uses, without requiring a separate section
 - the plan is one coherent change; if not, identify exactly where to split it and what each resulting plan covers
 - every section earns its place, without empty sections or resolved discussion
 - prose paragraphs are not hard-wrapped

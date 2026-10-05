@@ -11,13 +11,13 @@ Read `AGENTS.md`, `CONTRIBUTING.md`, and similar repository guidance first. For 
 
 For each comment, inspect the relevant code and write a test or run a command that faithfully represents the claim. If the reproduction fails for the expected reason, the claim is confirmed; make the smallest clear fix and add a regression test. If it passes, verify that the reproduction accurately covers the claim, then report that the issue could not be reproduced with that evidence. Simplify instead of patching around unnecessary complexity.
 
-Defer valid feedback that is outside the PR's scope. Recommend where it should be captured, but do not create issues or edit backlog files unless the user asks. Note outdated threads because the code may have moved.
+Defer valid feedback that is outside the PR's scope. Recommend where it should be captured, but do not create issues or edit backlog files unless the user asks. Before applying feedback, verify that the local branch and code correspond to the PR and review context. Note outdated threads when the code has moved; if the mismatch prevents you from reliably evaluating a comment, stop, explain what differs, and ask how to proceed rather than guessing at a fix.
 
 After fixes, rerun the repository's documented validation commands and confirm the change still meets its original goal.
 
 ## Scope and safety
 
-- Treat pre-existing untracked files as out of scope: do not inspect their contents or report issues in them. At most, list their paths once as assumed excluded. Mention a file only when the tracked diff clearly indicates that a required part of the change may have been omitted. Files created while implementing accepted feedback remain in scope.
+- Treat pre-existing untracked files as out of scope: do not inspect their contents or report issues in them. At most, list their paths once as assumed excluded. Mention a file only when the PR or review comment clearly indicates that a required part of the change may have been omitted. Files created while implementing accepted feedback remain in scope.
 - Never perform git write actions unless the user explicitly asks.
 - Do not hard-wrap prose paragraphs or commit-message subjects; follow repository formatters for code and structured files.
 - Keep changes focused on accepted feedback.
