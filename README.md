@@ -27,16 +27,16 @@ Skills may include supporting files (references, scripts, templates) alongside
 
 ## Installation on a new machine
 
-Clone, then symlink both agent config directories at this checkout:
+Clone, then run the setup script. It symlinks both agents' skills directories and their instructions file (`~/.claude/CLAUDE.md` and `~/.pi/agent/AGENTS.md`) at this checkout:
 
 ```sh
 git clone <this-repo> ~/SearchPilot/code/agent-skills
-ln -s ~/SearchPilot/code/agent-skills ~/.pi/agent/skills
-ln -s ~/SearchPilot/code/agent-skills ~/.claude/skills
+~/SearchPilot/code/agent-skills/setup-links.sh
 ```
 
-Because both paths are symlinks to the same directory, a `git pull` here updates
-the skills available in both tools immediately — no copying or syncing step.
+The script is idempotent: re-run it any time to verify or repair the links, or use `--check` to report without changing anything. It never deletes a real file or directory that is in the way; it tells you and exits non-zero.
+
+Because both tools' paths are symlinks to the same directory, a `git pull` here updates the skills available in both tools immediately, with no copying or syncing step.
 
 ## Adding a skill
 
