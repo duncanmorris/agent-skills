@@ -1,26 +1,25 @@
 ---
 name: plan-review
-description: Reviews implementation plans for any repository. Use when you want to check whether a plan is clear, appropriately scoped, testable, and ready for development before implementation begins.
+description: Review an implementation plan for clarity, scope, and readiness before development starts.
 ---
 
 # Plan Review
 
-Judge one thing: could someone implement this plan with low ambiguity and low review risk? Review it for clarity, scope, and readiness rather than whether it matches your preferred implementation. Keep feedback specific and actionable.
+Could someone implement this plan without guessing? Review the plan on its merits, not against your preferred implementation. Check the relevant code and references before raising questions.
 
-Check that:
+Look for:
 
-- the goal and scope are clear, and no simpler version would solve the same problem
-- the implementer has the necessary context and all references are present and valid
-- the approach is concrete enough to guide work without becoming a code dump, with assumptions named
-- acceptance criteria describe specific, testable outcomes rather than implementation tasks or routine post-push CI success; CI is a PR merge gate, and ticking it afterward would require another commit and CI run
-- relevant edge cases and failure modes are covered
-- any validation guidance is useful and matches what the repository actually uses, without requiring a separate section
-- the plan is one coherent change; if not, identify exactly where to split it and what each resulting plan covers
-- every section earns its place, without empty sections or resolved discussion
-- prose paragraphs are not hard-wrapped
+- a clear goal and the smallest coherent scope
+- enough context and concrete direction, without a code dump
+- observable acceptance outcomes, including relevant edge cases and failure modes
+- implementation steps and acceptance criteria completable before opening the PR, with rollout kept as context
+- unresolved assumptions or decisions that could block implementation
+- unnecessary complexity, repetition, empty sections, or stale discussion
 
-Push back specifically on unnecessary complexity and hidden scope expansion. Resolve what can be answered from repository code, documentation, and other available evidence; leave only questions that require user or product decisions. Propose exact edits that fold resolved answers into the background or approach, remove resolved questions, and retain decision history only when it helps the implementer. Do not modify the plan unless the user asks.
+Assume normal developer checks and CI. Do not request routine validation commands, pass criteria, confirmation, run records, or a validation section. Suggest a special check only for a concrete uncertainty normal checks cannot cover; prefer describing the required outcome over prescribing a command.
+
+Resolve questions from available evidence where possible. Suggest folding resolved answers into the approach and splitting unrelated work into separate plans. Do not modify the plan unless asked. Keep prose unwrapped.
 
 ## Report
 
-Give a verdict — ready, ready with nits, or not ready — with concise blockers, nits, and genuinely unresolved questions. If the plan is close, provide the smallest exact edits that would make it ready.
+Give a verdict: **ready**, **ready with nits**, or **not ready**. List only actionable blockers, nits, and genuinely unresolved questions, with the smallest exact edits that would resolve them.

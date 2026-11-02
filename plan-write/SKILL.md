@@ -1,17 +1,21 @@
 ---
 name: plan-write
-description: Writes implementation plans for any repository. Use when you need to turn a task, feature request, bug, or refactor into a short clear plan with goals, context, approach, acceptance criteria, risks, and validation steps before development starts.
+description: Write a short implementation plan for a task, feature, bug, or refactor before development starts.
 ---
 
 # Plan Write
 
-Write the shortest plan that lets someone else implement the change with low ambiguity. Inspect the relevant repository guidance, code, tests, tickets, documentation, and prior plans before drafting. Restate the problem simply and choose the smallest approach that solves it; if the approach feels complex, first ask whether a smaller change solves the real problem.
+Write the shortest plan someone else can implement without guessing. Read relevant repository guidance, code, tests, and tickets first. Choose the smallest change that solves the problem.
 
-Describe decisions that affect scope, architecture, or implementation strategy, but omit incidental implementation detail and code unless needed for clarity. Make acceptance criteria observable outcomes rather than implementation tasks or statements such as "works correctly." Do not include routine post-push CI success as an acceptance criterion: CI is a PR merge gate, and ticking the criterion afterward would require another commit and CI run. Mention change-specific validation commands only when useful, outside the acceptance checklist, and cover relevant edge cases or failure modes.
+Cover the goal, necessary context, approach, and observable acceptance outcomes, including relevant edge cases. Explain decisions that affect scope or architecture; omit incidental implementation details and code dumps. State deliberate exclusions in the approach.
 
-Omit empty sections. Put deliberate exclusions in the approach. Include risks and open questions only for unresolved uncertainty, and fold resolved answers into the background or approach. Preserve a short Decision History only when an earlier decision or rejected idea teaches something useful.
+Assume normal developer checks and CI. Do not add routine test, lint, format, type-check, build, or CI commands, pass criteria, or run records. Include a special check only when it resolves a concrete uncertainty normal checks cannot cover, such as production-data compatibility or performance.
 
-Do not hard-wrap prose paragraphs. Follow the repository's plan naming and location conventions. Always write the completed plan into the repository rather than only returning it in chat; when no convention exists, use `docs/plans/<kebab-case-title>.md`.
+Keep implementation steps and acceptance criteria completable before opening the PR. Describe any later rollout as context, not a completion gate. Split independently deliverable changes when needed.
+
+Omit empty sections and repetition. Keep only unresolved risks and questions; fold resolved answers into the approach. Retain decision history only when it helps the implementer.
+
+Follow repository naming and location conventions; otherwise write to `docs/plans/<kebab-case-title>.md`. Do not hard-wrap prose. Always save the plan in the repository and report its path and any unresolved decisions.
 
 ## Suggested structure
 
@@ -20,28 +24,22 @@ Do not hard-wrap prose paragraphs. Follow the repository's plan naming and locat
 
 ## Goal
 
-One or two sentences on what is changing and why.
+What changes and why.
 
 ## Background
 
-Context, references, and relevant assumptions.
+Necessary context and references.
 
 ## Approach
 
-The implementation strategy and anything explicitly out of scope.
+Strategy, key decisions, and exclusions.
 
 ## Acceptance Criteria
 
 - [ ] <observable outcome>
-- [ ] <observable edge-case outcome>
+- [ ] <relevant edge-case outcome>
 
-## Risks / Open Questions *(omit if none)*
+## Risks / Open Questions
 
-- <unresolved uncertainty or hidden assumption>
-
-## Decision History *(omit if none)*
-
-- <instructive resolved decision or rejected idea>
+Include only if unresolved.
 ```
-
-Report the written plan's path and mention only assumptions or confirmations that still require attention.

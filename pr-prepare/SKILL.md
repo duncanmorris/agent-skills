@@ -1,28 +1,27 @@
 ---
 name: pr-prepare
-description: Pre-PR self-review for any repository. Use before pushing or opening a pull request to validate scope, check plans or tickets and acceptance criteria, review code and test coverage like a picky reviewer, assess existing validation evidence, and summarize blockers and nits.
+description: Review a change before pushing or opening a PR, checking scope, acceptance outcomes, code, and test coverage for substantive issues.
 ---
 
 # PR Prepare
 
-Review the change as a picky senior reviewer would before it is pushed. Be honest: working is not the same as ready. Read `AGENTS.md`, `CONTRIBUTING.md`, and similar repository guidance first, and never perform git write actions unless the user explicitly asks.
+Read repository guidance first. Review the intended PR, including relevant commits, working-tree changes, and new files. Use the plan, ticket, and surrounding changes to establish scope, not Git status alone. If an untracked file's relevance is unclear, ask before reading it.
 
-Determine the review set before inspecting the change. Review relevant unpublished commits (or the branch from its merge base with the intended base branch) and relevant working-tree changes, including new files. Use the plan, ticket, and surrounding changes to decide what belongs to the PR; Git status alone does not decide scope. Do not exclude a new file just because a tracked file is also modified. If an untracked file's relationship to the change is unclear, list its path and ask before inspecting its contents; do not silently exclude a potentially required change.
+Check each acceptance outcome against the implementation. Flag missing behaviour and unrelated work; suggest splitting changes when appropriate.
 
-Find the relevant plan or ticket if one exists and walk through every acceptance criterion individually. Confirm each outcome criterion is actually satisfied in the code. Trust the plan's record of completed test runs rather than rerunning them to verify that record; still assess whether the tests cover the changed behaviour sufficiently. Treat routine post-push CI as a merge gate, not an acceptance criterion or a pre-PR blocker; report it as pending if it has not run. Flag scope creep early; feature work mixed with unrelated refactoring should usually be split.
+Review for:
 
-Review the code for:
+- bugs, unhappy paths, and incorrect edge-case behaviour
+- missing or misleading tests for changed behaviour
+- unnecessary complexity, dead code, and broken references
+- security, privacy, input-validation, and compatibility regressions
 
-- unhappy paths, incomplete error handling, and incorrect edge-case behaviour
-- missing, misleading, or insufficient tests for changed behaviour
-- unnecessary complexity and abstractions that do not earn their cost
-- dead code, unused imports, unreachable branches, and commented-out blocks
-- broken references to files, documentation, or configuration
-- input-validation gaps and unintended backward-compatibility breaks
-- relevant security or privacy regressions
+Assume normal developer checks and CI. Do not ask for confirmation or records of routine test, lint, format, type-check, build, or CI success. Missing records and pending CI are not review findings. Assess test coverage and correctness, not proof that checks ran.
 
-Review validation results recorded in the plan or provided by the user. If the plan says tests ran, accept that record without rerunning them; CI will run the checks again. Focus on whether the changed behaviour has appropriate tests and whether the code has substantive defects. Run a targeted check only when needed to investigate a specific suspected issue, not as a routine pre-PR checklist.
+Investigate known failures, but do not rerun checks merely to confirm reported success. Run a targeted check only to investigate a specific suspected defect; request extra evidence only for a concrete risk normal checks cannot cover.
+
+Never perform Git or GitHub write actions without explicit permission.
 
 ## Report
 
-Give one verdict — ready, ready with nits, or not ready — and separate blockers from nits with exact file references and why each matters. Include scope and acceptance-criteria gaps, existing validation evidence and any targeted checks performed, and any untracked paths whose relationship to the change remains unclear.
+Give a verdict: **ready**, **ready with nits**, or **not ready**. Separate blockers from nits, with file references, why each matters, and the smallest useful fix. Include scope or acceptance gaps and any unresolved file-scope questions. Omit routine validation status.
