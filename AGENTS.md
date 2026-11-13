@@ -4,3 +4,4 @@
 - Do not perform GitHub write actions without my explicit permission. Read-only GitHub actions are fine.
 - Never hard-wrap Markdown prose; use one line per paragraph (except for intentional line breaks, lists, and code blocks).
 - MySQL is available but typically not running. Ask if needed - never attempt to start docker / download a binary.
+- Do not create artifacts or hosted documents unless I ask for one. Write documents as local Markdown files; if Markdown isn't suitable, ask for permission before using anything else.
