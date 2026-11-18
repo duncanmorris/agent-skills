@@ -1,29 +1,42 @@
 ---
 name: simplify
-description: "Shorten and clarify prose, plans, docs, and code comments without losing decisions or requirements. Suggest changes by default; edit only when asked."
+description: "Make prose, plans, docs, and code comments simpler to read without losing decisions or requirements. Suggest changes by default; edit only when asked."
 ---
 
 # Simplify
 
-Review writing, not executable code. In code files, change only comments and docstrings when asked; leave identifiers, structure, and behaviour alone.
+Simple writing is better for everyone. It is easier to read, understand and reason about.
 
-Cut at the document level before polishing sentences. For each paragraph, identify its claim and ask what the reader loses if only that claim remains. Keep supporting detail only when it preserves a requirement, a non-obvious reason, necessary evidence, or an actionable caveat.
+Simple is not the same as short. Twice as many plain words beat half as many dense ones. Never make writing harder to read in order to make it shorter.
 
-- Delete repeated sections and explanations of why nothing needs to change. Keep each fact where the reader needs it.
-- Keep outcomes and decisions, not the story of getting there. Drop abandoned approaches and implementation trivia unless they explain a choice readers would otherwise question.
-- Combine overlapping background, approach, and acceptance criteria rather than repeating them.
-- Use plain, concrete words. Preserve technical terms when a simpler substitute would change the meaning.
-- Cut filler, repeated qualifications, long lead-ins, and lists that make the same point.
-- Remove transient details unless they matter to compatibility, accuracy, or the historical record.
+Review the writing, not the code. In code files, change only comments and docstrings. Leave identifiers, structure and behaviour alone.
 
-Compare the rewrite with the original: can readers still understand what changes, why, and any uncertainty or action that matters? Restore distinct requirements or caveats in shorter form. Recheck long paragraphs for explanations nobody needs to act on. Do not cut useful content to meet a word-count target.
+Work at the document level first, then at the sentence level.
+
+Look for duplication and remove it. For each paragraph, identify its claim and ask what the reader loses if only that claim remains. Keep supporting detail only when it preserves a requirement, a non-obvious reason, necessary evidence, or an actionable caveat.
+
+Look for the story of how we got to the final approach. Keep the outcome and the decision. Drop the story unless it explains a choice readers would otherwise question.
+
+Look for new or invented terminology. Check the user is happy with each term. Keep established technical terms when a simpler word would change the meaning.
+
+Look for dense sentences and unpack them. Replace abstract words with concrete ones. Replace a clever phrase with a plain one, even when the plain one is longer.
+
+Cut filler, repeated qualifications, long lead-ins, and lists that make the same point.
+
+Compare the rewrite with the original. Check readers can still understand what changes, why, and any uncertainty or action that matters. Restore anything lost, in plain words.
 
 ## Code comments
 
-- Describe the local code, not behaviour in another module, service, or repository that may change independently.
-- Make comments understandable from the diff; replace unexplained terms with concrete facts or drop them.
-- Use plain sentences with one idea each; avoid nested clauses and dashed asides.
+Describe the local code, not behaviour in another module, service, or repository that may change independently.
+
+Make comments understandable from the diff alone. Replace unexplained terms with concrete facts, or drop them.
+
+Write one idea per sentence. Avoid nested clauses and dashed asides.
 
 ## Response
 
-Suggest changes unless asked to edit or rewrite. Lead with the largest cuts, give concrete before → after examples, and estimate the reduction from a drafted rewrite, not just isolated nits. When editing, apply the full pass and report before/after word counts and meaningful trade-offs. Keep Markdown prose unwrapped.
+Suggest changes unless asked to edit or rewrite.
+
+Lead with the changes that most improve readability. Give concrete before and after examples.
+
+When editing, apply the full pass and report any trade-offs.
